@@ -1,0 +1,10 @@
+[
+    {
+      "name": "News",
+      "showProduction": true,
+      "to": "/admin/news",
+      "icon": "world",
+      "role": ["super_admin"]
+    }
+]
+  
