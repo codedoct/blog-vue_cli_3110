@@ -19,7 +19,7 @@
                         <tr v-for="(news, i) in news.data" :key="i">
                             <td>{{news.title}}</td>
                             <td>{{news.content}}</td>
-                            <td>{{news.status}}</td>
+                            <td><label-status :status="news.status" /></td>
                             <td>{{news.created_at}}</td>
                             <td></td>
                         </tr>
@@ -46,8 +46,15 @@
 import Pagination from '@/components/globals/Pagination';
 import EmptyTable from '@/components/globals/table/EmptyTable';
 import LoadingTable from '@/components/globals/table/LoadingTable';
+import LabelStatus from '@/components/globals/LabelStatus';
 
 export default {
+    components: {
+        Pagination,
+        EmptyTable,
+        LoadingTable,
+        LabelStatus
+    },
     data() {
         return {
             is_loading: false,
@@ -62,16 +69,17 @@ export default {
                         content: "content 1",
                         status: "active",
                         created_at: "2020-10-11-T02:27:44.328Z"
+                    },
+                    {
+                        title: "title 1",
+                        content: "content 1",
+                        status: "inactive",
+                        created_at: "2020-10-11-T02:27:44.328Z"
                     }
                 ],                
                 totalDocs: 1
             }
         };
-    },
-    components: {
-        Pagination,
-        EmptyTable,
-        LoadingTable
     },
     methods: {
         changeLimit(e) {
