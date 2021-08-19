@@ -20,8 +20,10 @@
                             <td>{{news.title}}</td>
                             <td>{{news.content}}</td>
                             <td><label-status :status="news.status" /></td>
-                            <td>{{news.created_at}}</td>
-                            <td></td>
+                            <td>{{getDatetime(news.created_at)}}</td>
+                            <td>
+                                <button class="uk-button uk-button-primary">Detail</button>
+                            </td>
                         </tr>
                     </tbody>
                     <empty-table v-else :colspan="5"/>
@@ -47,6 +49,7 @@ import Pagination from '@/components/globals/Pagination';
 import EmptyTable from '@/components/globals/table/EmptyTable';
 import LoadingTable from '@/components/globals/table/LoadingTable';
 import LabelStatus from '@/components/globals/LabelStatus';
+import { datetimeString } from '@/utils/formater';
 
 export default {
     components: {
@@ -68,13 +71,13 @@ export default {
                         title: "title 1",
                         content: "content 1",
                         status: "active",
-                        created_at: "2020-10-11-T02:27:44.328Z"
+                        created_at: "2020-10-11T02:27:44.328Z"
                     },
                     {
                         title: "title 1",
                         content: "content 1",
                         status: "inactive",
-                        created_at: "2020-10-11-T02:27:44.328Z"
+                        created_at: "2020-10-11T02:27:44.328Z"
                     }
                 ],                
                 totalDocs: 1
@@ -94,6 +97,9 @@ export default {
                 ...this.meta,
                 page: value
             };
+        },
+        getDatetime(date) {
+            return datetimeString(date);
         }
     }
 };
