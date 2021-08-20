@@ -15,8 +15,8 @@
                     </tr>
                 </thead>
                 <template v-if="!is_loading">
-                    <tbody v-if="news.data.length>0">
-                        <tr v-for="(news, i) in news.data" :key="i">
+                    <tbody v-if="news.docs.length>0">
+                        <tr v-for="(news, i) in news.docs" :key="i">
                             <td>{{news.title}}</td>
                             <td>{{news.content}}</td>
                             <td><label-status :status="news.status" /></td>
@@ -45,6 +45,7 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
 import Pagination from '@/components/globals/Pagination';
 import EmptyTable from '@/components/globals/table/EmptyTable';
 import LoadingTable from '@/components/globals/table/LoadingTable';
@@ -58,33 +59,28 @@ export default {
         LoadingTable,
         LabelStatus
     },
+    computed : {
+        ...mapGetters({
+            news: 'news/news'
+        })
+    },
     data() {
         return {
-            is_loading: false,
+            is_loading: true,
             meta: {
                 page: 1,
                 limit: 10
-            },
-            news: {
-                data: [
-                    {
-                        title: "title 1",
-                        content: "content 1",
-                        status: "active",
-                        created_at: "2020-10-11T02:27:44.328Z"
-                    },
-                    {
-                        title: "title 1",
-                        content: "content 1",
-                        status: "inactive",
-                        created_at: "2020-10-11T02:27:44.328Z"
-                    }
-                ],                
-                totalDocs: 1
             }
         };
     },
+    async mounted() {
+        await this.getNews(this.meta);
+        this.is_loading = false;
+    },
     methods: {
+        ...mapActions({
+            getNews: 'news/getNews'
+        }),
         changeLimit(e) {
             this.meta = {
                 ...this.meta,

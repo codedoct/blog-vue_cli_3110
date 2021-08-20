@@ -1,6 +1,6 @@
 <template>
-    <active v-if="status === 'active'"></active>
-    <inactive v-else-if="status === 'inactive'"></inactive>
+    <active v-if="status === 1"></active>
+    <inactive v-else-if="status === 0"></inactive>
 </template>
 
 <script>
