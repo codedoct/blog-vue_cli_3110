@@ -22,7 +22,7 @@
                             <td><label-status :status="news.status" /></td>
                             <td>{{getDatetime(news.created_at)}}</td>
                             <td>
-                                <button class="uk-button uk-button-primary">Detail</button>
+                                <button class="uk-button uk-button-primary" @click="() => $router.push(`/admin/news/${news.id}`)">Detail</button>
                             </td>
                         </tr>
                     </tbody>
