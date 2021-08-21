@@ -73,6 +73,13 @@ export default {
             }
         };
     },
+    watch: {
+        async meta() {
+            this.is_loading = true;
+            await this.getNews(this.meta);
+            this.is_loading = false;
+        }
+    },
     async mounted() {
         await this.getNews(this.meta);
         this.is_loading = false;

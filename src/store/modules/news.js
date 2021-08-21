@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import { apiGetNonAuth } from '@/utils/api';
 import { API_NEWS } from '@/utils/api-url';
+import { notificationDanger } from '@/utils/notification';
 
 const state = {
     news: {meta:{},docs:[]},
@@ -22,7 +23,7 @@ const actions = {
             const response = await apiGetNonAuth(API_NEWS.LIST, data);
             context.commit('SET_NEWS', response.data.result);
         } catch (err) {
-            console.log(err);
+            notificationDanger(err);
         }
     },
     async getNewsDetail(context, id) {
@@ -30,7 +31,7 @@ const actions = {
             const response = await apiGetNonAuth(API_NEWS.DETAIL(id));
             context.commit('SET_NEWS_DETAIL', response.data.result);
         } catch (err) {
-            console.log(err);
+            notificationDanger(err);
         }
     }
 };
