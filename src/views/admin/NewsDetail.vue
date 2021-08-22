@@ -1,5 +1,6 @@
 <template>
     <div class="uk-container uk-container-expand uk-margin-top card-scrollable">
+        <breadcrumb :breadcrumbs="breadcrumb_data" />
         <div class="uk-margin-top uk-card uk-card-default uk-padding-small codedoct-card">
             <h1>Title: "{{ news_detail.title }}"</h1>
             <div>{{news_detail.content}}</div>
@@ -14,8 +15,20 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
+import Breadcrumb from '@/components/globals/Breadcrumb';
 
 export default {
+    components: {
+        Breadcrumb
+    },
+    data() {
+        return {
+            breadcrumb_data: [
+                {link: '/admin/news', title: 'News'},
+                {link: null, title: null}
+            ]
+        };
+    },
     computed: {
         ...mapGetters({
             news_detail: 'news/news_detail'
@@ -23,6 +36,7 @@ export default {
     },
     async mounted() {
         await this.getNewsDetail(this.$route.params.id);
+        this.breadcrumb_data[this.breadcrumb_data.length-1].title = this.news_detail.title;
     },
     methods: {
         ...mapActions({

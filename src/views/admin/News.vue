@@ -59,11 +59,6 @@ export default {
         LoadingTable,
         LabelStatus
     },
-    computed : {
-        ...mapGetters({
-            news: 'news/news'
-        })
-    },
     data() {
         return {
             is_loading: true,
@@ -72,6 +67,11 @@ export default {
                 limit: 10
             }
         };
+    },
+    computed : {
+        ...mapGetters({
+            news: 'news/news'
+        })
     },
     watch: {
         async meta() {
