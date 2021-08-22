@@ -10,8 +10,10 @@
 <script>
 export default {
     props: {
-        breadcrumbs: { required: true },
-        type: Array,
+        breadcrumbs: {
+            required: true,
+            type: Array
+        },
     }
 };
 </script>
