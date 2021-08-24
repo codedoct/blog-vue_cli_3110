@@ -6,3 +6,9 @@ export const apiGetNonAuth = (URL, params) => axios({
     method: METHOD.GET,
     params
 });
+
+export const apiPostNonAuth = (URL, data) => axios({
+    url: URL,
+    method: METHOD.POST,
+    data
+});
