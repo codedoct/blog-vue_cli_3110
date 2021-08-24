@@ -1,6 +1,6 @@
 import { apiPostNonAuth } from '@/utils/api';
 import { API_AUTH } from '@/utils/api-url';
-import { notificationDanger } from '@/utils/notification';
+import { notificationDanger, notificationSuccess } from '@/utils/notification';
 
 const state = {};
 
@@ -10,6 +10,16 @@ const actions = {
     async register(context, data) {
         try {
             await apiPostNonAuth(API_AUTH.REGISTER, data);
+            notificationSuccess("Register berhasil silahkan login");
+        } catch (err) {
+            notificationDanger(err);
+            throw err;
+        }
+    },
+    async login(context, data) {
+        try {
+            await apiPostNonAuth(API_AUTH.LOGIN, data);
+            notificationSuccess("Login berhasil");
         } catch (err) {
             notificationDanger(err);
             throw err;

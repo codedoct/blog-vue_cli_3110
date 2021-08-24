@@ -7,6 +7,7 @@
             <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
         </p>
         <button class="uk-button uk-button-primary" @click="() => $router.push('/register')">Register</button>
+        <button class="uk-button uk-button-primary uk-margin-left" @click="() => $router.push('/login')">Login</button>
     </div>
 </template>
 
