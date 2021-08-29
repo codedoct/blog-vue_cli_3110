@@ -66,7 +66,10 @@ const routes = [
     {
         path: '*',
         name: 'NotFound',
-        component: () => import(/* webpackChunkName: "notfound" */ '@/views/NotFound')
+        component: () => import(/* webpackChunkName: "notfound" */ '@/views/NotFound'),
+        meta: {
+            public: true
+        }
     }
 ];
 
