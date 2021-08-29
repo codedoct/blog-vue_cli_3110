@@ -31,7 +31,7 @@ const routes = [
     {
         path: '/register',
         name: 'Register',
-        component: () => import(/* webpackChunkName: "about" */ '@/views/Register.vue'),
+        component: () => import(/* webpackChunkName: "register" */ '@/views/Register.vue'),
         meta: {
             public: true,
             onlyWhenLoggedOut: true
@@ -40,7 +40,7 @@ const routes = [
     {
         path: '/login',
         name: 'Login',
-        component: () => import(/* webpackChunkName: "about" */ '@/views/Login.vue'),
+        component: () => import(/* webpackChunkName: "login" */ '@/views/Login.vue'),
         meta: {
             public: true,
             onlyWhenLoggedOut: true
@@ -54,12 +54,12 @@ const routes = [
             {
                 path: 'news',
                 name: 'News',
-                component: () => import(/* webpackChunkName: "dashboard" */ '@/views/admin/News.vue')
+                component: () => import(/* webpackChunkName: "news" */ '@/views/admin/News.vue')
             },
             {
                 path: 'news/:id',
                 name: 'Detail News',
-                component: () => import(/* webpackChunkName: "dashboard" */ '@/views/admin/NewsDetail.vue')
+                component: () => import(/* webpackChunkName: "news-detail" */ '@/views/admin/NewsDetail.vue')
             },
         ]
     },
