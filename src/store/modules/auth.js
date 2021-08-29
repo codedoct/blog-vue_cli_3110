@@ -1,6 +1,8 @@
 import { apiPostNonAuth } from '@/utils/api';
 import { API_AUTH } from '@/utils/api-url';
 import { notificationDanger, notificationSuccess } from '@/utils/notification';
+import { setCookie } from '@/utils/auth';
+import router from '@/router';
 
 const state = {};
 
@@ -18,8 +20,12 @@ const actions = {
     },
     async login(context, data) {
         try {
-            await apiPostNonAuth(API_AUTH.LOGIN, data);
+            const response = await apiPostNonAuth(API_AUTH.LOGIN, data);
+            setCookie(response.data.token, response.data.result);
             notificationSuccess("Login berhasil");
+            setTimeout(() => {
+                router.go(0);
+            }, 1000);
         } catch (err) {
             notificationDanger(err);
             throw err;

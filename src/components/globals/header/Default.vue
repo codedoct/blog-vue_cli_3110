@@ -21,7 +21,7 @@
         <ul class="uk-navbar-nav">
           <li>
             <a class="uk-navbar-toggle" href="#">
-              <span class="uk-margin-small-left">Admin</span>
+              <span class="uk-margin-small-left">{{name}}</span>
             </a>
             <div class="uk-navbar-dropdown" uk-toggle>
               <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
@@ -37,7 +37,17 @@
 </template>
 
 <script>
+import { getUserProfile } from '@/utils/auth';
+
 export default {
+    data() {
+        return {
+            name: null
+        };
+    },
+    mounted() {
+        this.name = getUserProfile().name;
+    },
     methods: {
         async logout() {}
     }
