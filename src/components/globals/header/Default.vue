@@ -26,7 +26,7 @@
             <div class="uk-navbar-dropdown" uk-toggle>
               <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
                 <li class="uk-nav-header">Account</li>
-                <li><router-link to="/" @click.native="logout"><span class="uk-margin-small-right" uk-icon="icon: sign-out"></span> Log Out</router-link></li>
+                <li><router-link to="#" @click.native="logout"><span class="uk-margin-small-right" uk-icon="icon: sign-out"></span> Log Out</router-link></li>
               </ul>
             </div>
           </li>
@@ -37,6 +37,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import { getUserProfile } from '@/utils/auth';
 
 export default {
@@ -49,7 +50,12 @@ export default {
         this.name = getUserProfile().name;
     },
     methods: {
-        async logout() {}
+        ...mapActions({
+            logoutUser: 'auth/logout'
+        }),
+        logout() {
+            this.logoutUser();
+        }
     }
 };
 </script>

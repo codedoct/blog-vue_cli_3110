@@ -1,7 +1,7 @@
-import { apiPostNonAuth } from '@/utils/api';
+import { apiPostNonAuth, apiPostAuth } from '@/utils/api';
 import { API_AUTH } from '@/utils/api-url';
 import { notificationDanger, notificationSuccess } from '@/utils/notification';
-import { setCookie } from '@/utils/auth';
+import { setCookie, logoutUser } from '@/utils/auth';
 import router from '@/router';
 
 const state = {};
@@ -30,7 +30,18 @@ const actions = {
             notificationDanger(err);
             throw err;
         }
-    }
+    },
+    async logout() {
+        try {
+            await apiPostAuth(API_AUTH.LOGOUT);
+            notificationSuccess('Logout Success');
+            setTimeout(() => {
+                logoutUser();
+            }, 1000);
+        } catch (err) {
+            notificationDanger(err);
+        }
+    },
 };
 
 const getters = {};

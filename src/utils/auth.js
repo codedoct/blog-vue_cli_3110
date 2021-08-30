@@ -1,5 +1,5 @@
 import * as Cookies from 'js-cookie';
-// import router from '@/router';
+import router from '@/router';
 
 export const setCookie = (token, profile) => {
     const stringProfile = JSON.stringify({
@@ -14,9 +14,9 @@ export const setCookie = (token, profile) => {
     };
 };
 
-// export const getUserToken = () => {
-//     return Cookies.get('blog-token');
-// };
+export const getUserToken = () => {
+    return Cookies.get('blog-token');
+};
 
 export const getUserProfile = () => {
     const profileCookies = Cookies.get('blog-profile');
@@ -32,8 +32,8 @@ export const isLogin = () => {
     return false;
 };
 
-// export const logoutUser = () => {
-//     Cookies.remove('blog-token', { path: '/' });
-//     Cookies.remove('blog-profile', { path: '/' });
-//     router.go(0);
-// };
+export const logoutUser = () => {
+    Cookies.remove('blog-token', { path: '/' });
+    Cookies.remove('blog-profile', { path: '/' });
+    router.go(0);
+};

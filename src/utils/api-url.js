@@ -4,7 +4,8 @@ const BASE_URL = `${process.env.VUE_APP_BASE_URL}/api/${process.env.VUE_APP_API_
 const BASE_AUTH_URL = 'auth';
 export const API_AUTH = {
     REGISTER: `${BASE_URL}/${BASE_AUTH_URL}/register`,
-    LOGIN: `${BASE_URL}/${BASE_AUTH_URL}/login`
+    LOGIN: `${BASE_URL}/${BASE_AUTH_URL}/login`,
+    LOGOUT: `${BASE_URL}/${BASE_AUTH_URL}/logout`
 };
 
 // News
