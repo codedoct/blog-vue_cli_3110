@@ -5,32 +5,32 @@
         <div class="uk-margin-top uk-card uk-card-default uk-padding-small codedoct-card">
             <div class="uk-margin-top uk-overflow-auto">
                 <table class="uk-table uk-table-striped">
-                <thead>
-                    <tr>
-                        <th class="uk-width-small"><span class="uk-text-bold">Title</span></th>
-                        <th class="uk-width-small"><span class="uk-text-bold">Content</span></th>
-                        <th class="uk-width-small"><span class="uk-text-bold">Status</span></th>
-                        <th class="uk-width-small"><span class="uk-text-bold">Created At</span></th>
-                        <th class="uk-width-small"><span class="uk-text-bold">Action</span></th>
-                    </tr>
-                </thead>
-                <template v-if="!is_loading">
-                    <tbody v-if="news.docs.length>0">
-                        <tr v-for="(news, i) in news.docs" :key="i">
-                            <td>{{news.title}}</td>
-                            <td>{{news.content}}</td>
-                            <td><label-status :status="news.status" /></td>
-                            <td>{{getDatetime(news.created_at)}}</td>
-                            <td>
-                                <button class="uk-button uk-button-primary" @click="() => $router.push(`/admin/news/${news.id}`)">Detail</button>
-                            </td>
+                    <thead>
+                        <tr>
+                            <th class="uk-width-small"><span class="uk-text-bold">Title</span></th>
+                            <th class="uk-width-small"><span class="uk-text-bold">Content</span></th>
+                            <th class="uk-width-small"><span class="uk-text-bold">Status</span></th>
+                            <th class="uk-width-small"><span class="uk-text-bold">Created At</span></th>
+                            <th class="uk-width-small"><span class="uk-text-bold">Action</span></th>
                         </tr>
-                    </tbody>
-                    <empty-table v-else :colspan="5"/>
-                </template>
-                <template v-else>
-                    <loading-table :colspan="5"/>
-                </template>
+                    </thead>
+                    <template v-if="!is_loading">
+                        <tbody v-if="news.docs.length>0">
+                            <tr v-for="(news, i) in news.docs" :key="i">
+                                <td>{{news.title}}</td>
+                                <td>{{news.content}}</td>
+                                <td><label-status :status="news.status" /></td>
+                                <td>{{getDatetime(news.created_at)}}</td>
+                                <td>
+                                    <button class="uk-button uk-button-primary" @click="() => $router.push(`/admin/news/${news.id}`)">Detail</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <empty-table v-else :colspan="5"/>
+                    </template>
+                    <template v-else>
+                        <loading-table :colspan="5"/>
+                    </template>
                 </table>
                 <pagination
                     :total-data="news.totalDocs"
