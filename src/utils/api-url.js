@@ -8,6 +8,12 @@ export const API_AUTH = {
     LOGOUT: `${BASE_URL}/${BASE_AUTH_URL}/logout`
 };
 
+// Profile
+const BASE_PROFILE_URL = 'user';
+export const API_USER = {
+    PROFILE: `${BASE_URL}/${BASE_PROFILE_URL}/profile`
+};
+
 // News
 const BASE_NEWS_URL = 'news';
 export const API_NEWS = {

@@ -52,6 +52,11 @@ const routes = [
         redirect: '/admin/news',
         children: [
             {
+                path: 'profile',
+                name: 'Profile',
+                component: () => import(/* webpackChunkName: "profile" */ '@/views/admin/Profile.vue')
+            },
+            {
                 path: 'news',
                 name: 'News',
                 component: () => import(/* webpackChunkName: "news" */ '@/views/admin/News.vue')

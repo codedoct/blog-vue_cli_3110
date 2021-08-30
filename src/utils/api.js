@@ -7,6 +7,14 @@ export const apiGetNonAuth = (URL, params) => axios({
     method: METHOD.GET,
     params
 });
+export const apiGetAuth = (URL, params) => axios({
+    url: URL,
+    method: METHOD.GET,
+    params,
+    headers: {
+        Authorization: getUserToken()
+    }
+});
 
 export const apiPostNonAuth = (URL, data) => axios({
     url: URL,

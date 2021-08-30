@@ -26,6 +26,7 @@
             <div class="uk-navbar-dropdown" uk-toggle>
               <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
                 <li class="uk-nav-header">Account</li>
+                <li><router-link to="/admin/profile"><span class="uk-margin-small-right" uk-icon="icon: user"></span> Profile</router-link></li>
                 <li><router-link to="#" @click.native="logout"><span class="uk-margin-small-right" uk-icon="icon: sign-out"></span> Log Out</router-link></li>
               </ul>
             </div>
