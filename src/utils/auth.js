@@ -26,7 +26,8 @@ export const getUserProfile = () => {
 
 export const isLogin = () => {
     const token = Cookies.get('blog-token');
-    if (token) {
+    const profile = Cookies.get('blog-profile');
+    if (token && profile) {
         return true;
     }
     return false;
